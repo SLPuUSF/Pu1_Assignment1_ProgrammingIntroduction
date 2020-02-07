@@ -80,8 +80,8 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
                     for (int Num = 1; Num <= itemIndex + 1; Num++) // caculate sum of each combination.
                                                                    // each combination includes numbers from 1 to (itemIndex + 1)
-                    { 
-                        sum = sum + Num; 
+                    {
+                        sum = sum + Num;
                     }
                     sumArray[itemIndex] = sum;
                 }
@@ -139,7 +139,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 //datetime usfdate = new datetime(0, 0, 0, usfhours, usfminutes, usfseconds);
                 int[] usfdate = new int[] { usfhours, usfminutes, usfseconds };
 
-                
+
                 Console.WriteLine("usf format: " + string.Join(":", usfdate));
 
                 Console.WriteLine();
@@ -272,7 +272,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         // Resort chars
                         for (int charIndex = 0; charIndex < lengthOfChars; charIndex++)
                         {
-                           resortCharsArray[charIndex] = inputWordsAsChars[lengthOfChars - 1 - charIndex];
+                            resortCharsArray[charIndex] = inputWordsAsChars[lengthOfChars - 1 - charIndex];
                         }
 
                         // Store resortCharsArray into a string variable.
@@ -280,7 +280,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
                         // Display the results.
                         Console.WriteLine("Resort: " + resortWords);
-                        
+
 
                         if (resortWords == combineWords)
                         {
@@ -318,7 +318,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         }
                     }
 
-                  
+
                 }
 
                 Console.WriteLine("Output: " + outPut);
@@ -327,7 +327,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             }
             catch
             {
-            Console.WriteLine("exception occured while computing Palindromepairs()");
+                Console.WriteLine("exception occured while computing Palindromepairs()");
             }
         }
 
@@ -367,12 +367,39 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             try
             {
                 // Write your code here
+                int stoneNum = n4;
+                CanWinGame(stoneNum);
+                bool CanWinGame(int n)
+                {
+                    var dp = new bool[n + 1];
+                    dp[0] = false;
+                    dp[1] = true;
+                    dp[2] = true;
+                    dp[3] = true;
+
+                    for (var i = 4; i <= n; i++)
+                    {
+                        dp[i] = !(dp[i - 1] && dp[i - 2] && dp[i - 3]);
+                    }
+
+                    Console.WriteLine(string.Join(",", dp));
+
+                    return dp[n];
+                }
+
+
 
             }
             catch
             {
                 Console.WriteLine("Exception occured while computing Stones()");
             }
+        }
+        public int whetherPlyTowWin(int i)
+        {
+            // Store input argument in a local variable.
+            int input = i;
+            return input * input;
         }
 
     }
