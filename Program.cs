@@ -10,18 +10,18 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             int n = 5;
             PrintPattern(n);
 
-            Console.WriteLine("question 2");
+            Console.WriteLine("Question 2");
             int n2 = 6;
             printseries(n2);
 
 
-            Console.WriteLine("question 3");
+            Console.WriteLine("Question 3");
             string s = "09:15:35pm";
             string t = usftime(s);
             Console.WriteLine(t);
 
 
-            Console.WriteLine("question 4");
+            Console.WriteLine("Question 4");
             int n3 = 110;
             int k = 11;
             usfnumbers(n3, k);
@@ -255,7 +255,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         string resortWords = new string(resortCharsArray);
 
                         // Display the results.
-                        Console.WriteLine("Resort: " + resortWords);
+                        //Console.WriteLine("Resort: " + resortWords);
 
 
                         if (resortWords == combineWords)
@@ -362,15 +362,15 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                             for (int pickNum = 1; pickNum <= 3; pickNum++)
                             {
                                 Console.WriteLine("third for work");
-
                                 for (int numTwo = 0; numTwo < MATRIX_ROWS; numTwo++)
                                 {
                                     Console.WriteLine("fourth for work");
                                     solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
                                 }
+                                
                                 solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
                                 solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
-
+                                
                             }
 
                             for (int numThree = (3 * numOne); numThree < (3 * numOne + 3); numThree++)
