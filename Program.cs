@@ -376,29 +376,29 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                     Console.Write("Output: ");
                     for (int j = 0; j < columSize; j++)
                     {
-                        Console.Write(" [");
+                        Console.Write("[");
                         for (int i = 0; i < rowSize; i++)
                         {
                             Console.Write(solutionMatrix[i, j] + ",");
                         }
                         Console.Write("] ");
-                         //Console.WriteLine("");
+                        
                     }
                     Console.WriteLine("");
 
-                    //// print solutionMatrix
-                    //Console.WriteLine(" ");
-                    //for (int i = 0; i < rowSize; i++)
-                    //{
-                    //    Console.Write("  ");
-                    //    for (int j = 0; j < columSize; j++) 
-                    //    {
-                    //        Console.Write(solutionMatrix[i, j] + " ");
-                    //    }
-                    //    Console.Write(" ");
-                    //    Console.WriteLine("");
-                    //}
-                    //Console.WriteLine("");
+                    // print solutionMatrix
+                    Console.WriteLine(" ");
+                    for (int i = 0; i < rowSize; i++)
+                    {
+                        Console.Write("  ");
+                        for (int j = 0; j < columSize; j++)
+                        {
+                            Console.Write(solutionMatrix[i, j] + " ");
+                        }
+                        Console.Write(" ");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("");
                 }
                 else
                 {
