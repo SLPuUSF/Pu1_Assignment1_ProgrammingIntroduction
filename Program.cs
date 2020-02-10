@@ -33,7 +33,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
             Console.WriteLine();
             Console.WriteLine("Question 6");
-            int n4 = 7;
+            int n4 = 9;
             Stones(n4);
 
         }
