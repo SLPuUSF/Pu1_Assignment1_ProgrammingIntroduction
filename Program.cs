@@ -72,6 +72,21 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         {
             try
             {
+                
+
+                // Solution One:
+
+                int size = n2;
+                double[] seriesarray = new double[size];
+                for (int count = 1; count <= n2; count++)
+                {
+                    seriesarray[count - 1] = (1 + count) * count / 2;
+                }
+
+                Console.WriteLine(string.Join(",", seriesarray));
+                Console.WriteLine();
+
+                // Solution Two
                 //int size = n2; // there are n2 type combinations.
                 //int[] sumArray = new int[size]; // create an array to store sums.
 
@@ -88,17 +103,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 //}
                 //Console.WriteLine(string.Join(",", sumArray));
                 //Console.WriteLine();
-
-                ////write your code here .!!
-                int size = n2;
-                double[] seriesarray = new double[size];
-                for (int count = 1; count <= n2; count++)
-                {
-                    seriesarray[count - 1] = (1 + count) * count / 2;
-                }
-
-                Console.WriteLine(string.Join(",", seriesarray));
-                Console.WriteLine();
             }
             catch
             {
@@ -116,6 +120,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 // earth date input
                 //Console.WriteLine("enter the date of earth with the format of hh:mm:ssam or hh:mm:sspm: ");
                 //string earthdateinput = Console.ReadLine();
+
                 string earthdateinput = s;
                 DateTime dateofearth = Convert.ToDateTime(earthdateinput);
 
@@ -124,14 +129,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int enteredminutes = dateofearth.Minute;
                 int enteredseconds = dateofearth.Second;
 
-                //var enteredispm = (dateofearth.hour >= 12);
-
-                /*int enteredispm = 0;
-                if (dateofearth.hour >= 12)
-                    enteredispm = 1;
-                else
-                    enteredispm = 0;
-               */
+                
                 // total seconds of dateofearth
                 int totalsecofearth = enteredhours * 3600 + enteredminutes * 60 + enteredseconds;
 
@@ -166,6 +164,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             {
                 // write your code here
                 //Console.WriteLine("select the numbers 1 to 110, 11 numbers per line.");
+
                 string[] myIntArray = new string[110];
                 int[] numbersArray = new int[110];
                 for (int i = 1; i <= 110; i++)
@@ -325,7 +324,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int remainderNum = stoneNum % 4;
                 int quotientNum = stoneNum / 4;
                 int roundForPlyerTwo = (stoneNum - remainderNum) / 4;
-                int roundTotal = 2 * quotientNum + 1;
+                int totalGame = 2 * quotientNum + 1;
 
                 int rowSize = 2 * quotientNum + 1;
                 int columSize = (int)Math.Pow(3, quotientNum);
@@ -337,7 +336,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int MATRIX3_COLUMNS = 0;
                 
 
-                int[,] solutionMatrix = new int[rowSize, columSize];
+                int[,] solutionMatrix = new int[rowSize, columSize]; 
                 int[,] solutionMatrix2 = new int[rowSize, 3];
                 int[,] solutionMatrix3 = new int[rowSize, columSize];
 
@@ -345,49 +344,51 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
                 if (canWinGame(stoneNum) == true)
                 {
-                    for (int count = 0; count < columSize; count++)
+                    for (int count = 0; count < columSize; count++) // first round player 1 have to pick up storns amount to remainderNum.
                     {
                         solutionMatrix[0, count] = remainderNum;
                     }
 
                     
 
-                    for (int num = 1; num <= roundForPlyerTwo; num++)
+                    for (int num = 1; num <= roundForPlyerTwo; num++) // after player 1 pick up storns first time, there are num rounds left.
                     {
-                        
-
                         MATRIX2_ROWS = 2 * num + 1;
 
                         MATRIX3_ROWS = 2 * num + 1;
                         MATRIX3_COLUMNS = (int)Math.Pow(3, num);
 
-                        for (int numOne = 0; numOne < MATRIX_COLUMNS; numOne++)
+                        // Each column is a solution set. For coming game, play has three ways to take off storn
+                        for (int numOne = 0; numOne < MATRIX_COLUMNS; numOne++) // scan the columns of solutionMatrix
                         {
-                           
-                            for (int pickNum = 1; pickNum <= 3; pickNum++)
+                            for (int pickNum = 1; pickNum <= 3; pickNum++) // add new solution to previous solution set.
                             {
-                                
+                                // solution new soluton into solutionMatrix2
                                 for (int numTwo = 0; numTwo < MATRIX2_ROWS - 2; numTwo++)
                                 {
-                                    
+                                   
                                     solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
                                 }
                                 solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
                                 solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
 
                             }
-                            for (int numThr = 3 * numOne; numThr < (numThr + 3) && numThr < MATRIX3_COLUMNS; numThr++)
+
+                            // add each solutionMatrix2 to solutionMatrix3
+                            for (int numThr = 3 * numOne; numThr < (3 * (numOne +1)) && numThr < MATRIX3_COLUMNS; numThr++)
                             {
                                 
                                 for (int numFou = 0; numFou < MATRIX2_ROWS; numFou++)
                                 {
+                                   
                                     solutionMatrix3[numFou, numThr] = solutionMatrix2[numFou, (numThr - 3 * numOne)];
                                 }
                             }
                         }
+
+                        // copy solutionMatrix3 to solutionMatrix
                         for (int numFiv = 0; numFiv < columSize; numFiv++)
                         {
-                            
                             for (int numSix = 0; numSix < rowSize; numSix++)
                             {
                                 solutionMatrix[numSix, numFiv] = solutionMatrix3[numSix, numFiv];
@@ -398,37 +399,20 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         
                     }
 
-                        for (int numFive = 0; numFive < solutionMatrix.GetLength(1); numFive++)
-                        {
-                            
-                            for (int numSix = 0; numSix < solutionMatrix.GetLength(0); numSix++)
-                            {
-                                
-                                solutionMatrix[numSix, numFive] = solutionMatrix3[numSix, numFive];
-                            }
-                        }
-
-                    //for (int i = 0; i < rowSize; i++)
-                    //{
-                    //    for (int j = 0; j < columSize; j++)
-                    //    {
-                    //        Console.Write(solutionMatrix2[i, j] + ",");
-                    //    }
-                    //    Console.WriteLine();
-                    //}
-
+                    
+                    // Print each columun 
                     Console.Write("Output: ");
                     for (int j = 0; j < columSize; j++)
                     {
-                        Console.Write("[");
+                        Console.Write(" [");
                         for (int i = 0; i < rowSize; i++)
                         {
                             Console.Write(solutionMatrix[i, j] + ",");
                         }
-                        Console.Write("]  " );
+                        Console.Write("] ");
+                         //Console.WriteLine("");
                     }
-
-                    Console.ReadLine();
+                    Console.WriteLine("");
                 }
                 else
                 {
