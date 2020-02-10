@@ -6,30 +6,30 @@ namespace Pu1_Assignment1ProgrammingIntroduction
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Question 1");
-            //int n = 5;
-            //PrintPattern(n);
+            Console.WriteLine("Question 1");
+            int n = 5;
+            PrintPattern(n);
 
-            //Console.WriteLine("question 2");
-            //int n2 = 6;
-            //printseries(n2);
-
-
-            //Console.WriteLine("question 3");
-            //string s = "09:15:35pm";
-            //string t = usftime(s);
-            //Console.WriteLine(t);
+            Console.WriteLine("question 2");
+            int n2 = 6;
+            printseries(n2);
 
 
-            //Console.WriteLine("question 4");
-            //int n3 = 110;
-            //int k = 11;
-            //usfnumbers(n3, k);
+            Console.WriteLine("question 3");
+            string s = "09:15:35pm";
+            string t = usftime(s);
+            Console.WriteLine(t);
 
-            //Console.WriteLine();
-            //Console.WriteLine("Question 5");
-            //string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
-            //Palindromepairs(words);
+
+            Console.WriteLine("question 4");
+            int n3 = 110;
+            int k = 11;
+            usfnumbers(n3, k);
+
+            Console.WriteLine();
+            Console.WriteLine("Question 5");
+            string[] words = new string[] { "abcd", "dcba", "lls", "s", "sssll" };
+            Palindromepairs(words);
 
             Console.WriteLine();
             Console.WriteLine("Question 6");
@@ -66,43 +66,46 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             }
         }
 
+
         // question 2:
         private static void printseries(int n2)
         {
             try
             {
-                int size = n2; // there are n2 type combinations.
-                int[] sumArray = new int[size]; // create an array to store sums.
+                //int size = n2; // there are n2 type combinations.
+                //int[] sumArray = new int[size]; // create an array to store sums.
 
-                for (int itemIndex = 0; itemIndex < n2; itemIndex++) // go into items of sumArray one by one and store sum.
-                {
-                    int sum = 0;
+                //for (int itemIndex = 0; itemIndex < n2; itemIndex++) // go into items of sumArray one by one and store sum.
+                //{
+                //    int sum = 0;
 
-                    for (int Num = 1; Num <= itemIndex + 1; Num++) // caculate sum of each combination.
-                                                                   // each combination includes numbers from 1 to (itemIndex + 1)
-                    {
-                        sum = sum + Num;
-                    }
-                    sumArray[itemIndex] = sum;
-                }
-                Console.WriteLine(string.Join(",", sumArray));
+                //    for (int Num = 1; Num <= itemIndex + 1; Num++) // caculate sum of each combination.
+                //                                                   // each combination includes numbers from 1 to (itemIndex + 1)
+                //    {
+                //        sum = sum + Num;
+                //    }
+                //    sumArray[itemIndex] = sum;
+                //}
+                //Console.WriteLine(string.Join(",", sumArray));
+                //Console.WriteLine();
 
                 ////write your code here .!!
-                //int size = n2;
-                //double[] seriesarray = new double[size];
-                //for (int count = 1; count <= n2; count++)
-                //{
-                //    seriesarray[count - 1] = (1 + count) * count / 2;
-                //}
+                int size = n2;
+                double[] seriesarray = new double[size];
+                for (int count = 1; count <= n2; count++)
+                {
+                    seriesarray[count - 1] = (1 + count) * count / 2;
+                }
 
-                //Console.WriteLine(string.Join(",", seriesarray));
-                //Console.WriteLine();
+                Console.WriteLine(string.Join(",", seriesarray));
+                Console.WriteLine();
             }
             catch
             {
                 Console.WriteLine("exception occured while computing printseries");
             }
         }
+
 
         // question 3:
         public static string usftime(string s)
@@ -154,28 +157,15 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
+
         // question 4:
-        /*n- total number of integers( 110 )
-         * k-number of numbers per line ( 11)
-         * usf numbers : this method prints the numbers 1 to 110, 11 numbers per line.
-         * the method shall print 'u' in place of numbers which are multiple of 3,"s" for 
-         * multiples of 5,"f" for multiples of 7, 'us' in place of numbers which are multiple 
-         * of 3 and 5,'sf' in place of numbers which are multiple of 5 and 7 and so on. 
-         * the output shall look like 
-         * 1 2 u 4 s u f 8 u s 11 
-         * u 13 f us 16 17 u 19 s uf 22
-         * 23 u s 26 u f 29 us 31 32 u....
-         * 
-         * returns      : n/a
-         * return type  : void
-         */
 
         public static void usfnumbers(int n3, int k)
         {
             try
             {
                 // write your code here
-                Console.WriteLine("select the numbers 1 to 110, 11 numbers per line.");
+                //Console.WriteLine("select the numbers 1 to 110, 11 numbers per line.");
                 string[] myIntArray = new string[110];
                 int[] numbersArray = new int[110];
                 for (int i = 1; i <= 110; i++)
@@ -229,23 +219,8 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
-        // Question 5:
-        /*You are given a list of unique words, the task is to find all the pairs of 
-         distinct indices (i,j) in the given list such that, the concatenation of two
-         words i.e. words[i]+words[j] is a palindrome.
-         Example:
-         Input: ["abcd","dcba","lls","s","sssll"]
-         Output: [[0,1],[1,0],[3,2],[2,4]] 
-         Explanation: The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
-         Example:
-         Input: ["bat","tab","cat"]
-         Output: [[0,1],[1,0]] 
-         Explanation: The palindromes are ["battab","tabbat"]
-          
-         returns      : N/A
-         return type  : void
-         */
 
+        // Question 5:
         public static void Palindromepairs(string[] words)
         {
             try
@@ -332,37 +307,8 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             }
         }
 
+
         // Question 6:
-        /*
-         You are playing a stone game with one of your friends. There are N number of 
-         stones in a bag, each time one of you take turns to take out 1 to 3 stones. 
-         The player who takes out the last stone will be the winner. In this case you
-         will be the first player to remove the stone(s)(Player 1).
-          
-         Write a method to determine whether you can win the game given the number of 
-         stones in the bag. Print false if you cannot win the game, otherwise print any
-         one set of moves where you are winning the game. Array should contain moves by
-         both the players.
-
-         *Input: 4
-         Output: false
-         Explanation: As there are 4 stones in the bag, you will never win the game. 
-         No matter 1,2 or 3 stones you take out, the last stone will always be removed by   
-         your friend.
-
-         *Input: 5
-         Output: [1,1,3]   or [1,2,2] or [1,3,1]
-         Player 1 picks up 1 stone then player 2 picks up 1 or 2 or 3 stones and the  
-         remaining stones are picked up by player 1.
-         Explanation: As there are 5 stones in the bag, you take out one stone.
-         As there are 4 stones in the bag and it’s your friend’s turn. He will never win 
-         the game because no matter 1,2 or 3 stones he takes out, you will the one to take 
-         out the last stone.
-          
-            returns      : N/A
-            return type  : void
-         */
-
         public static void Stones(int n4)
         {
             try
@@ -380,23 +326,24 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int remainderNum = stoneNum % 4;
                 int quotientNum = stoneNum / 4;
                 int roundForPlyerTwo = (stoneNum - remainderNum) / 4;
-                int roundTotal = 2 * quotientNum +1;
+                int roundTotal = 2 * quotientNum + 1;
 
                 int MATRIX_ROWS = 1;
                 int MATRIX_COLUMNS = 1;
-                int MATRIX2_ROWS = 0;
+                int MATRIX2_ROWS = 1;
                 int MATRIX2_COLUMNS = 3;
-                int MATRIX3_ROWS = 0;
-                int MATRIX3_COLUMNS = 0;
+                int MATRIX3_ROWS = 1;
+                int MATRIX3_COLUMNS = 1;
 
                 int[,] solutionMatrix = new int[MATRIX_ROWS, MATRIX_COLUMNS];
                 int[,] solutionMatrix2 = new int[MATRIX2_ROWS, MATRIX2_COLUMNS];
                 int[,] solutionMatrix3 = new int[MATRIX3_ROWS, MATRIX3_COLUMNS];
 
-                
+
 
                 if (canWinGame(stoneNum) == true)
-                {   solutionMatrix[0, 0] = remainderNum;
+                {
+                    solutionMatrix[0, 0] = remainderNum;
 
                     Console.WriteLine("First if work");
 
@@ -415,19 +362,21 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                             for (int pickNum = 1; pickNum <= 3; pickNum++)
                             {
                                 Console.WriteLine("third for work");
-                                for (int numTwo = 0; numTwo < solutionMatrix2.GetLength(0); numTwo++)
+
+                                for (int numTwo = 0; numTwo < MATRIX_ROWS; numTwo++)
                                 {
                                     Console.WriteLine("fourth for work");
                                     solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
                                 }
                                 solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
                                 solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
+
                             }
 
-                            for (int numThree = 3 * numOne; numThree < (3 * numOne + 3); numThree++)
+                            for (int numThree = (3 * numOne); numThree < (3 * numOne + 3); numThree++)
                             {
                                 Console.WriteLine("fifth for work");
-                                for (int numFour = 0; numFour < solutionMatrix3.GetLength(0); numFour++)
+                                for (int numFour = 0; numFour < MATRIX3_ROWS; numFour++)
                                 {
                                     Console.WriteLine("sixth for work");
                                     solutionMatrix3[numFour, numThree] = solutionMatrix2[numFour, (numThree - 3 * numOne)];
@@ -447,9 +396,9 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                                 solutionMatrix[numSix, numFive] = solutionMatrix3[numSix, numFive];
                             }
                         }
-                            
+
                     }
-                    Console.WriteLine("Output: "  );
+                    Console.WriteLine("Output: ");
 
                     for (int i = 0; i < MATRIX_ROWS; i++)
                     {
@@ -474,7 +423,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 Console.WriteLine("Exception occured while computing Stones()");
             }
         }
-       
+
 
     }
 }
