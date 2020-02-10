@@ -111,8 +111,9 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             {
 
                 // earth date input
-                Console.WriteLine("enter the date of earth with the format of hh:mm:ssam or hh:mm:sspm: ");
-                string earthdateinput = Console.ReadLine();
+                //Console.WriteLine("enter the date of earth with the format of hh:mm:ssam or hh:mm:sspm: ");
+                //string earthdateinput = Console.ReadLine();
+                string earthdateinput = s;
                 DateTime dateofearth = Convert.ToDateTime(earthdateinput);
 
                 // calculateions
@@ -368,23 +369,101 @@ namespace Pu1_Assignment1ProgrammingIntroduction
             {
                 // Write your code here
                 int stoneNum = n4;
-                CanWinGame(stoneNum);
-                bool CanWinGame(int n)
+                canWinGame(stoneNum);
+
+
+                bool canWinGame(int n)
                 {
-                    var dp = new bool[n + 1];
-                    dp[0] = false;
-                    dp[1] = true;
-                    dp[2] = true;
-                    dp[3] = true;
+                    return (n % 4 != 0);
+                }
 
-                    for (var i = 4; i <= n; i++)
+                int remainderNum = stoneNum % 4;
+                int quotientNum = stoneNum / 4;
+                int roundForPlyerTwo = (stoneNum - remainderNum) / 4;
+                int roundTotal = 2 * quotientNum +1;
+
+                int MATRIX_ROWS = 1;
+                int MATRIX_COLUMNS = 1;
+                int MATRIX2_ROWS = 0;
+                int MATRIX2_COLUMNS = 3;
+                int MATRIX3_ROWS = 0;
+                int MATRIX3_COLUMNS = 0;
+
+                int[,] solutionMatrix = new int[MATRIX_ROWS, MATRIX_COLUMNS];
+                int[,] solutionMatrix2 = new int[MATRIX2_ROWS, MATRIX2_COLUMNS];
+                int[,] solutionMatrix3 = new int[MATRIX3_ROWS, MATRIX3_COLUMNS];
+
+                
+
+                if (canWinGame(stoneNum) == true)
+                {   solutionMatrix[0, 0] = remainderNum;
+
+                    Console.WriteLine("First if work");
+
+                    for (int num = 1; num <= roundTotal; num++)
                     {
-                        dp[i] = !(dp[i - 1] && dp[i - 2] && dp[i - 3]);
+                        Console.WriteLine("first for work");
+
+                        MATRIX2_ROWS = 2 * num + 1;
+
+                        MATRIX3_ROWS = 2 * num + 1;
+                        MATRIX3_COLUMNS = (int)Math.Pow(3, num);
+
+                        for (int numOne = 0; numOne < (solutionMatrix.GetLength(1)); numOne++)
+                        {
+                            Console.WriteLine("second for work");
+                            for (int pickNum = 1; pickNum <= 3; pickNum++)
+                            {
+                                Console.WriteLine("third for work");
+                                for (int numTwo = 0; numTwo < solutionMatrix2.GetLength(0); numTwo++)
+                                {
+                                    Console.WriteLine("fourth for work");
+                                    solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
+                                }
+                                solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
+                                solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
+                            }
+
+                            for (int numThree = 3 * numOne; numThree < (3 * numOne + 3); numThree++)
+                            {
+                                Console.WriteLine("fifth for work");
+                                for (int numFour = 0; numFour < solutionMatrix3.GetLength(0); numFour++)
+                                {
+                                    Console.WriteLine("sixth for work");
+                                    solutionMatrix3[numFour, numThree] = solutionMatrix2[numFour, (numThree - 3 * numOne)];
+                                }
+                            }
+                        }
+
+                        MATRIX_ROWS = 2 * num + 1;
+                        MATRIX_COLUMNS = (int)Math.Pow(3, num);
+
+                        for (int numFive = 0; numFive < solutionMatrix.GetLength(1); numFive++)
+                        {
+                            Console.WriteLine("seventh for work");
+                            for (int numSix = 0; numSix < solutionMatrix.GetLength(0); numSix++)
+                            {
+                                Console.WriteLine("eighth for work");
+                                solutionMatrix[numSix, numFive] = solutionMatrix3[numSix, numFive];
+                            }
+                        }
+                            
                     }
+                    Console.WriteLine("Output: "  );
 
-                    Console.WriteLine(string.Join(",", dp));
-
-                    return dp[n];
+                    for (int i = 0; i < MATRIX_ROWS; i++)
+                    {
+                        for (int j = 0; j < MATRIX_COLUMNS; j++)
+                        {
+                            Console.Write(string.Format("{0} ", solutionMatrix[i, j]));
+                        }
+                        Console.Write(Environment.NewLine + Environment.NewLine);
+                    }
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Console.WriteLine("Output: " + "false");
                 }
 
 
@@ -395,12 +474,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 Console.WriteLine("Exception occured while computing Stones()");
             }
         }
-        public int whetherPlyTowWin(int i)
-        {
-            // Store input argument in a local variable.
-            int input = i;
-            return input * input;
-        }
+       
 
     }
 }
