@@ -211,7 +211,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
 
 
-        // Question 5:
+        /// Question 5:
         public static void Palindromepairs(string[] words)
         {
             try
@@ -291,7 +291,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
-        // Question 6:
+        /// Question 6:
         public static void Stones(int n4)
         {
             try
@@ -386,18 +386,19 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                     }
                     Console.WriteLine("");
 
-                    Console.WriteLine(" ");
-                    for (int i = 0; i < rowSize; i++)
-                    {
-                        Console.Write("  ");
-                        for (int j = 0; j < columSize; j++) 
-                        {
-                            Console.Write(solutionMatrix[i, j] + " ");
-                        }
-                        Console.Write(" ");
-                        Console.WriteLine("");
-                    }
-                    Console.WriteLine("");
+                    //// print solutionMatrix
+                    //Console.WriteLine(" ");
+                    //for (int i = 0; i < rowSize; i++)
+                    //{
+                    //    Console.Write("  ");
+                    //    for (int j = 0; j < columSize; j++) 
+                    //    {
+                    //        Console.Write(solutionMatrix[i, j] + " ");
+                    //    }
+                    //    Console.Write(" ");
+                    //    Console.WriteLine("");
+                    //}
+                    //Console.WriteLine("");
                 }
                 else
                 {
