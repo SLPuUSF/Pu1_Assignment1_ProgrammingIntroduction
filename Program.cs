@@ -317,7 +317,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int stoneNum = n4;
                 canWinGame(stoneNum);
 
-
                 bool canWinGame(int n)
                 {
                     return (n % 4 != 0);
@@ -328,86 +327,107 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int roundForPlyerTwo = (stoneNum - remainderNum) / 4;
                 int roundTotal = 2 * quotientNum + 1;
 
+                int rowSize = 2 * quotientNum + 1;
+                int columSize = (int)Math.Pow(3, quotientNum);
+
                 int MATRIX_ROWS = 1;
                 int MATRIX_COLUMNS = 1;
-                int MATRIX2_ROWS = 1;
-                int MATRIX2_COLUMNS = 3;
-                int MATRIX3_ROWS = 1;
-                int MATRIX3_COLUMNS = 1;
+                int MATRIX2_ROWS = 0;
+                int MATRIX3_ROWS = 0;
+                int MATRIX3_COLUMNS = 0;
+                
 
-                int[,] solutionMatrix = new int[MATRIX_ROWS, MATRIX_COLUMNS];
-                int[,] solutionMatrix2 = new int[MATRIX2_ROWS, MATRIX2_COLUMNS];
-                int[,] solutionMatrix3 = new int[MATRIX3_ROWS, MATRIX3_COLUMNS];
+                int[,] solutionMatrix = new int[rowSize, columSize];
+                int[,] solutionMatrix2 = new int[rowSize, 3];
+                int[,] solutionMatrix3 = new int[rowSize, columSize];
 
 
 
                 if (canWinGame(stoneNum) == true)
                 {
-                    solutionMatrix[0, 0] = remainderNum;
-
-                    Console.WriteLine("First if work");
-
-                    for (int num = 1; num <= roundTotal; num++)
+                    for (int count = 0; count < columSize; count++)
                     {
-                        Console.WriteLine("first for work");
+                        solutionMatrix[0, count] = remainderNum;
+                    }
+
+                    
+
+                    for (int num = 1; num <= roundForPlyerTwo; num++)
+                    {
+                        
 
                         MATRIX2_ROWS = 2 * num + 1;
 
                         MATRIX3_ROWS = 2 * num + 1;
                         MATRIX3_COLUMNS = (int)Math.Pow(3, num);
 
-                        for (int numOne = 0; numOne < (solutionMatrix.GetLength(1)); numOne++)
+                        for (int numOne = 0; numOne < MATRIX_COLUMNS; numOne++)
                         {
-                            Console.WriteLine("second for work");
+                           
                             for (int pickNum = 1; pickNum <= 3; pickNum++)
                             {
-                                Console.WriteLine("third for work");
-                                for (int numTwo = 0; numTwo < MATRIX_ROWS; numTwo++)
+                                
+                                for (int numTwo = 0; numTwo < MATRIX2_ROWS - 2; numTwo++)
                                 {
-                                    Console.WriteLine("fourth for work");
+                                    
                                     solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
                                 }
-                                
                                 solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
                                 solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
-                                
-                            }
 
-                            for (int numThree = (3 * numOne); numThree < (3 * numOne + 3); numThree++)
+                            }
+                            for (int numThr = 3 * numOne; numThr < (numThr + 3) && numThr < MATRIX3_COLUMNS; numThr++)
                             {
-                                Console.WriteLine("fifth for work");
-                                for (int numFour = 0; numFour < MATRIX3_ROWS; numFour++)
+                                
+                                for (int numFou = 0; numFou < MATRIX2_ROWS; numFou++)
                                 {
-                                    Console.WriteLine("sixth for work");
-                                    solutionMatrix3[numFour, numThree] = solutionMatrix2[numFour, (numThree - 3 * numOne)];
+                                    solutionMatrix3[numFou, numThr] = solutionMatrix2[numFou, (numThr - 3 * numOne)];
                                 }
                             }
                         }
-
+                        for (int numFiv = 0; numFiv < columSize; numFiv++)
+                        {
+                            
+                            for (int numSix = 0; numSix < rowSize; numSix++)
+                            {
+                                solutionMatrix[numSix, numFiv] = solutionMatrix3[numSix, numFiv];
+                            }
+                        }
                         MATRIX_ROWS = 2 * num + 1;
                         MATRIX_COLUMNS = (int)Math.Pow(3, num);
+                        
+                    }
 
                         for (int numFive = 0; numFive < solutionMatrix.GetLength(1); numFive++)
                         {
-                            Console.WriteLine("seventh for work");
+                            
                             for (int numSix = 0; numSix < solutionMatrix.GetLength(0); numSix++)
                             {
-                                Console.WriteLine("eighth for work");
+                                
                                 solutionMatrix[numSix, numFive] = solutionMatrix3[numSix, numFive];
                             }
                         }
 
-                    }
-                    Console.WriteLine("Output: ");
+                    //for (int i = 0; i < rowSize; i++)
+                    //{
+                    //    for (int j = 0; j < columSize; j++)
+                    //    {
+                    //        Console.Write(solutionMatrix2[i, j] + ",");
+                    //    }
+                    //    Console.WriteLine();
+                    //}
 
-                    for (int i = 0; i < MATRIX_ROWS; i++)
+                    Console.Write("Output: ");
+                    for (int j = 0; j < columSize; j++)
                     {
-                        for (int j = 0; j < MATRIX_COLUMNS; j++)
+                        Console.Write("[");
+                        for (int i = 0; i < rowSize; i++)
                         {
-                            Console.Write(string.Format("{0} ", solutionMatrix[i, j]));
+                            Console.Write(solutionMatrix[i, j] + ",");
                         }
-                        Console.Write(Environment.NewLine + Environment.NewLine);
+                        Console.Write("]  " );
                     }
+
                     Console.ReadLine();
                 }
                 else
