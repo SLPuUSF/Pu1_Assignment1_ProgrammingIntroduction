@@ -39,7 +39,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
-        // question 1:
+        /// question 1:
         private static void PrintPattern(int n)
         {
             double num = 0;
@@ -67,13 +67,11 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
-        // question 2:
+        /// question 2:
         private static void printseries(int n2)
         {
             try
             {
-                
-
                 // Solution One:
 
                 int size = n2;
@@ -111,12 +109,11 @@ namespace Pu1_Assignment1ProgrammingIntroduction
         }
 
 
-        // question 3:
+        /// question 3:
         public static string usftime(string s)
         {
             try
             {
-
                 // earth date input
                 //Console.WriteLine("enter the date of earth with the format of hh:mm:ssam or hh:mm:sspm: ");
                 //string earthdateinput = Console.ReadLine();
@@ -129,7 +126,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int enteredminutes = dateofearth.Minute;
                 int enteredseconds = dateofearth.Second;
 
-                
                 // total seconds of dateofearth
                 int totalsecofearth = enteredhours * 3600 + enteredminutes * 60 + enteredseconds;
 
@@ -141,11 +137,9 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 //datetime usfdate = new datetime(0, 0, 0, usfhours, usfminutes, usfseconds);
                 int[] usfdate = new int[] { usfhours, usfminutes, usfseconds };
 
-
                 Console.WriteLine("usf format: " + string.Join(":", usfdate));
 
                 Console.WriteLine();
-
             }
             catch
             {
@@ -156,7 +150,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
 
 
 
-        // question 4:
+        /// question 4:
 
         public static void usfnumbers(int n3, int k)
         {
@@ -207,9 +201,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                     {
                         Console.WriteLine();
                     }
-
                 }
-
             }
             catch
             {
@@ -256,7 +248,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         // Display the results.
                         //Console.WriteLine("Resort: " + resortWords);
 
-
                         if (resortWords == combineWords)
                         {
                             int lWordsIndex = countNum;
@@ -279,11 +270,7 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         }
 
                         // Store resortCharsArray into a string variable.
-                        string resortWords = new string(resortCharsArray);
-
-                        // Display the results.
-                        //Console.WriteLine("Resort: " + resortWords);
-
+                        string resortWords = new string(resortCharsArray);     // Display the results.
 
                         if (resortWords == combineWords)
                         {
@@ -293,12 +280,9 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         }
                     }
 
-
                 }
 
                 Console.WriteLine("Output: " + outPut);
-
-
             }
             catch
             {
@@ -320,7 +304,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 {
                     return (n % 4 != 0);
                 }
-
                 int remainderNum = stoneNum % 4;
                 int quotientNum = stoneNum / 4;
                 int roundForPlyerTwo = (stoneNum - remainderNum) / 4;
@@ -335,12 +318,9 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                 int MATRIX3_ROWS = 0;
                 int MATRIX3_COLUMNS = 0;
                 
-
                 int[,] solutionMatrix = new int[rowSize, columSize]; 
                 int[,] solutionMatrix2 = new int[rowSize, 3];
                 int[,] solutionMatrix3 = new int[rowSize, columSize];
-
-
 
                 if (canWinGame(stoneNum) == true)
                 {
@@ -348,8 +328,6 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                     {
                         solutionMatrix[0, count] = remainderNum;
                     }
-
-                    
 
                     for (int num = 1; num <= roundForPlyerTwo; num++) // after player 1 pick up storns first time, there are num rounds left.
                     {
@@ -364,23 +342,19 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                             for (int pickNum = 1; pickNum <= 3; pickNum++) // add new solution to previous solution set.
                             {
                                 // solution new soluton into solutionMatrix2
-                                for (int numTwo = 0; numTwo < MATRIX2_ROWS - 2; numTwo++)
+                                for (int numTwo = 0; numTwo < MATRIX_ROWS; numTwo++)
                                 {
-                                   
-                                    solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, pickNum - 1];
+                                    solutionMatrix2[numTwo, pickNum - 1] = solutionMatrix[numTwo, numOne];
                                 }
                                 solutionMatrix2[MATRIX2_ROWS - 2, pickNum - 1] = pickNum;
                                 solutionMatrix2[MATRIX2_ROWS - 1, pickNum - 1] = 4 - pickNum;
-
                             }
 
                             // add each solutionMatrix2 to solutionMatrix3
                             for (int numThr = 3 * numOne; numThr < (3 * (numOne +1)) && numThr < MATRIX3_COLUMNS; numThr++)
                             {
-                                
                                 for (int numFou = 0; numFou < MATRIX2_ROWS; numFou++)
                                 {
-                                   
                                     solutionMatrix3[numFou, numThr] = solutionMatrix2[numFou, (numThr - 3 * numOne)];
                                 }
                             }
@@ -396,10 +370,8 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                         }
                         MATRIX_ROWS = 2 * num + 1;
                         MATRIX_COLUMNS = (int)Math.Pow(3, num);
-                        
                     }
 
-                    
                     // Print each columun 
                     Console.Write("Output: ");
                     for (int j = 0; j < columSize; j++)
@@ -413,21 +385,29 @@ namespace Pu1_Assignment1ProgrammingIntroduction
                          //Console.WriteLine("");
                     }
                     Console.WriteLine("");
+
+                    Console.WriteLine(" ");
+                    for (int i = 0; i < rowSize; i++)
+                    {
+                        Console.Write("  ");
+                        for (int j = 0; j < columSize; j++) 
+                        {
+                            Console.Write(solutionMatrix[i, j] + " ");
+                        }
+                        Console.Write(" ");
+                        Console.WriteLine("");
+                    }
+                    Console.WriteLine("");
                 }
                 else
                 {
                     Console.WriteLine("Output: " + "false");
                 }
-
-
-
             }
             catch
             {
                 Console.WriteLine("Exception occured while computing Stones()");
             }
         }
-
-
     }
 }
